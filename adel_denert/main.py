@@ -7,11 +7,11 @@ import numpy as np
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def hello():
-  return "Hello World!"
+  return 'Hello World'
 
-@app.route("/detection/face")
+@app.route('/detection/face')
 def detectFace():
   face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
   img = cv2.imread('img2.jpeg')
@@ -20,15 +20,15 @@ def detectFace():
   items = []
   for coords in faces:
     item = {
-      'top': str(coords[0]),
-      'left': str(coords[1]),
-      'width': str(coords[2]),
-      'height': str(coords[3])
+      'top': int(coords[0]),
+      'left': int(coords[1]),
+      'width': int(coords[2]),
+      'height': int(coords[3])
     }
     items.append(item)
   res = json.dumps(items)
 
   return res
 
-if __name__ == "__main__":
+if __name__ == '__main__':
   app.run()
