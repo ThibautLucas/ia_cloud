@@ -64,14 +64,18 @@ app = Flask(__name__)
 def hello():
   return "Hello World!"
 
+# Exemple Demo : http://127.0.0.1:5000/detectFacesFromFile
 @app.route("/detectFacesFromFile")
 def detectFacesFile():
     return json.dumps(LoadImageFromFile(), default=convert)
 
+
+# Exemples http://localhost:5000/detectFacesFromUrl?url=http://lorempixel.com/output/people-q-c-500-500-2.jpg
 @app.route("/detectFacesFromUrl")
 def detectFacesUrl():
     return json.dumps(LoadImageFromUrl(request.args.get("url")), default=convert)
 
+# Exemple : http://localhost:5000/detectFacesFromUpload
 @app.route('/detectFacesFromUpload', methods=['GET', 'POST'])
 def detectFacesUpload():
     if request.method == 'POST':

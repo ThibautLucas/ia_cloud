@@ -1,3 +1,4 @@
 .DS_Store
 arthur_marty/.vscode/settings.json
 arthur_marty/haar/__pycache__/
+arthur_marty/output-*
