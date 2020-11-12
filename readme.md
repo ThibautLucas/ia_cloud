@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ## Projet IA dans le cloud
 
 1. Détecteur de visage :
@@ -14,3 +15,6 @@
     - Faire un appel d'API dans un notebook vers votre serveur Flask en envoyant un JSON contenant le path vers l'image où faire les détections
     - Récupérer les coordonnées des prédictions renvoyées par votre API
     - Avec OpenCV tracez ces prédictions sur l'image que vous aurez chargée dans le notebook et afficher le résultat
+=======
+##Projet IA dans le cloud
+>>>>>>> Stashed changes
