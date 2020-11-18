@@ -1,0 +1,7 @@
+python -m venv falskIA C:\Users\valentin\Desktop\Ynov\M2\MLIA\Git\ia_cloud\ducros_valentin\flask
+ .\Scripts\activate
+ pip install Flask twilio
+ pip freeze > requirements.txt
+ python app.py
+
+     - utilisaton de request => pour faire une requeste web
