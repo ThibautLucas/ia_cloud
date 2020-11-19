@@ -8,10 +8,6 @@ import os
 from PIL import Image
 from io import BytesIO
 
-####################
-##  MAKE MODULES  ##
-####################
-
 def getTargetModel(target):
   if target == 'face':
     return 'cascades/haarcascade_frontalface_default.xml'
