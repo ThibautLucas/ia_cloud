@@ -1,0 +1,89 @@
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  margin-left: .5rem;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  margin: auto;
+  width: 100%;
+  max-width: 45rem;
+  max-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+}
+
+.toolbar {
+  margin-top: .5rem;
+  padding: 0 .5rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+input {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.image-container {
+  background-color: black;
+  height: 25rem;
+  border: solid black 2px;
+}
+
+.select-model-input {
+  width: 10rem;
+  height: 1.5rem;
+  border: solid black 2px;
+  border: solid black 2px;
+}
+
+#fileinput {
+  display: none;
+}
+
+.select-file-btn {
+  display: flex;
+  align-items: center;
+}
+
+.file-name-container {
+  width: 10rem;
+  height: 1.5rem;
+  border: solid black 2px;
+  border: solid black 2px;
+}
+
+.icon-container {
+  width: 3rem;
+  height: 3rem;
+  background-color: limegreen;
+  border: solid black 2px;
+  border-radius: .5rem;
+}
