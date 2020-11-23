@@ -1,2 +1,2 @@
-/django/djangoIA/lib
-/flask/Lib
+/django/djangoIA/lib/*
+/flask/Lib/*
