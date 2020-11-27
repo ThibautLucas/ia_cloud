@@ -208,3 +208,128 @@ def print_frames(frames):
         sleep(.1)
         
 print_frames(frames)
+
+
+"""
+NOW let's Learn from the process 
+
+
+Breaking it down into steps, we get:
+
+        - Initialize the Q-table by all zeros.
+        - Start exploring actions: For each state, select any one among all possible actions for the current state (S).
+        - Travel to the next state (S') as a result of that action (a).
+        - For all possible actions from the state (S') select the one with the highest Q-value.
+        - Update Q-table values using the equation.
+        - Set the next state as the current state.
+        - If goal state is reached, then end and repeat the process.
+
+
+
+
+"""
+
+import numpy as np
+
+q_table = np.zeros([env.observation_space.n, env.action_space.n]) # initializing the Q table
+
+
+""" 
+We can now create the training algorithm that will update this Q-table as the agent explores the environment over thousands of episodes.
+
+In the first part of while not done, we decide whether to pick a random action or to exploit the already computed Q-values. 
+This is done simply by using the epsilon value and comparing it to the random.uniform(0, 1) function, which returns an arbitrary number between 0 and 1.
+
+We execute the chosen action in the environment to obtain the next_state and the reward from performing the action. After that, we calculate the maximum Q-value for the actions corresponding to the next_state, and with that, we can easily update our Q-value to the new_q_value:
+
+
+"""
+
+
+import random
+from IPython.display import clear_output
+
+# Hyperparameters
+alpha = 0.1
+gamma = 0.6
+epsilon = # parametre qui détermine si nous allons préviligié l'exploration ou l'utilisation des valeurs apprise, le mettre entre 0.05 et 0.2
+
+# For plotting metrics
+all_epochs = []
+all_penalties = []
+
+for i in range(1, 100001):
+    state = env.reset()
+
+    epochs, penalties, reward, = # initialize the params to 0
+    done = False
+    
+    while not done:
+        if random.uniform(0, 1) < epsilon:
+            action = env.action_space.sample() # Explore action space
+        else:
+            action = np.argmax(q_table[state]) # Exploit learned values
+
+        next_state, reward, done, info = env.step(action) 
+        
+        old_value = q_table[state, action]
+        next_max = np.max(q_table[]) # /!\ trouver l'index pour acceder a l'action d'apres
+        
+        new_value = (1 - alpha) * old_value + alpha * (reward + gamma * next_max) #C'est la formule que nous avons vu précédemment
+        q_table[state, action] =  # updater la table par la nouvelle valeur
+
+        if reward == -10:
+            penalties  ## update la valeur des penalités
+
+        state = next_state
+        epochs += 1
+        
+    if i % 100 == 0:
+        clear_output(wait=True)
+        print(f"Episode: {i}")
+
+print("Training finished.\n")
+
+
+
+""" 
+Ok now let's evaluate the agent 
+
+We don't need to explore actions any further, so now the next action is always selected using the best Q-value:
+"""
+
+total_epochs, total_penalties = 0, 0
+episodes = # choisir le nombre d'épisode
+
+frames = []
+for _ in range(episodes):
+    state = env.reset()
+    epochs, penalties, reward = 0, 0, 0
+    
+    done = False
+    
+    while not done:
+        action = np.argmax(q_table[state])
+        state, reward, done, info = env.step(action)
+
+        if reward == -10:
+            penalties += 1
+
+        frames.append({
+                'frame': env.render(mode='ansi'),
+                'state': state,
+                'action': action,
+                'reward': reward
+                }
+            )
+        epochs += 1
+
+    total_penalties += penalties
+    total_epochs += epochs
+
+print(f"Results after {episodes} episodes:")
+print(f"Average timesteps per episode: {total_epochs / episodes}")
+print(f"Average penalties per episode: {total_penalties / episodes}")
+
+
+print_frames(frames)
